@@ -7,7 +7,8 @@ using WebApp.Filters;
 
 namespace WebApp.Controllers {
     [HttpsOnly]
-    [ResultDiagnostics]
+    //[ResultDiagnostics]
+    [ResultDiagnosticsTwo]
     public class HomeController : Controller {
        
         public IActionResult Index() {
