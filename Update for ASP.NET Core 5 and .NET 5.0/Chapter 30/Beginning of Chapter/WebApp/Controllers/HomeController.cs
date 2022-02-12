@@ -9,6 +9,9 @@ namespace WebApp.Controllers {
     [HttpsOnly]
     //[ResultDiagnostics]
     [ResultDiagnosticsTwo]
+    [GuidResponse]
+    [GuidResponse]
+    [GuidResponse]
     public class HomeController : Controller {
        
         public IActionResult Index() {
