@@ -11,7 +11,8 @@ namespace WebApp.Controllers {
             return View("Message","This is the Index action on the Home controller");
         }
 
-        [ChangeArg]
+        //[ChangeArg]
+        [ChangeArgTwo]
         public IActionResult Messages(string message1, string message2 = "none")
         {
             return View("Message",$"{message1},{message2}");
