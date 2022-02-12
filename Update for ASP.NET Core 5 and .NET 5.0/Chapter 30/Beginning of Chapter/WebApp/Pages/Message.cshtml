@@ -20,7 +20,8 @@
 
 @functions {
     [RequireHttps]
-    [SimpleCache]
+    //[SimpleCache]
+    [SimpleCacheAsync]
     public class MessageModel : PageModel {
 
         public object Message { get; set; } = $"{DateTime.Now.ToLongTimeString()}:This is the Message Razor Page";
