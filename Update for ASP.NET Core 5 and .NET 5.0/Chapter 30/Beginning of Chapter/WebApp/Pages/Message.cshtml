@@ -1,5 +1,6 @@
 ﻿@page "/pages/message"
 @model MessageModel
+@using Microsoft.AspNetCore.Mvc.Filters
 @using Microsoft.AspNetCore.Mvc.RazorPages
 @using System.Collections.Generic
 @using WebApp.Filters
@@ -22,13 +23,22 @@
     [RequireHttps]
     //[SimpleCache]
     //[SimpleCacheAsync]
-    [ChangePageArgs]
+    //[ChangePageArgs]
     public class MessageModel : PageModel {
 
         public object Message { get; set; } = $"{DateTime.Now.ToLongTimeString()}:This is the Message Razor Page";
         public void OnGet(string message1, string message2)
         {
             Message = $"{message1},{message2}";
+        }
+
+        // Override Page Filter method directly!
+        public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+            if (context.HandlerArguments.ContainsKey("message1"))
+            {
+                context.HandlerArguments["message1"] = "New message--Mike Tang";
+            }
         }
     }
 }
