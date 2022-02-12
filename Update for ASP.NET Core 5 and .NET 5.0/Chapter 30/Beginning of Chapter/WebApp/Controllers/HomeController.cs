@@ -37,5 +37,21 @@ namespace WebApp.Controllers {
             context.Result = View("Message", "MIKE,TANG");
         }
 
+        [RangeException]
+        public ViewResult GenerateException(int? id){
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            else if (id > 10)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id));
+            }
+            else
+            {
+                return View("Message", $"The value is {id}");
+            }
+        }
+
     }
 }

@@ -2,3 +2,6 @@
   override filter methods within Controller directly!
   Two methods can be overrided.  one will run before invoking Action. Another will run after invoking Action
   Can override either methods or both of them.
+
+# Exception Filter
+  Try the code, very beautiful, can handle the Exception!
