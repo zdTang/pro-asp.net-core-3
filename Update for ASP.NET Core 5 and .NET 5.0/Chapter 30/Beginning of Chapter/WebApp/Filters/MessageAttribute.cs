@@ -7,13 +7,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace WebApp.Filters
+
 {
     [AttributeUsage(AttributeTargets.Method|AttributeTargets.Class, AllowMultiple = true)]
-    public class MessageAttribute : Attribute, IAsyncAlwaysRunResultFilter
+    public class MessageAttribute : Attribute, IAsyncAlwaysRunResultFilter,IOrderedFilter
     {
         private int counter = 0;
         private string msg;
         public MessageAttribute(string message)=>msg = message;
+        public int Order { get; set; }  
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
             Dictionary<string, string> resultData;

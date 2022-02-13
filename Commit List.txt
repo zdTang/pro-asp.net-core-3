@@ -14,3 +14,7 @@
 
 # Global filter
   Notice the "HttpsOnly" filter will generate a Result,  which will be filtered by "GuidResponse" result filter.  so that need to comment "GuidResponse"
+
+# Change the Filter Order
+  1. Use "Order" property  -1,0,1,2,3  sequential order
+  2. the Attribute must inherit "IOrderedFilter" interface
