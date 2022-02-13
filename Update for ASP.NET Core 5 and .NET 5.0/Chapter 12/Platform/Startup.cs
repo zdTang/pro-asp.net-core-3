@@ -62,6 +62,20 @@ namespace Platform {
                 await next();
                 await context.Response.WriteAsync($"\n Custom Middleware2 --Status Code:{context.Response.StatusCode}");
             });
+            //branch
+            app.Map("/branch", branch =>
+            {
+                branch.UseMiddleware<QueryStringMiddleWare>();
+                branch.Use(async (context, next) =>
+                {
+                    await context.Response.WriteAsync($"Branch Middleware");
+                    // Here not pass to next()
+                });
+            });
+            
+            
+            
+            
             //Add custom middleware: Approach two
             app.UseMiddleware<QueryStringMiddleWare>();
             //app.UseMiddleware<LocationMiddleware>();
