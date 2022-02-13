@@ -35,6 +35,8 @@ namespace WebApp {
                 .SetValueMustNotBeNullAccessor(value => "Please enter a value"));
 
             services.AddScoped<GuidResponseTwoAttribute>();
+            // Add global filter
+            services.Configure<MvcOptions>(opts=>opts.Filters.Add<HttpsOnlyAttribute>());
         }
 
         public void Configure(IApplicationBuilder app, DataContext context,

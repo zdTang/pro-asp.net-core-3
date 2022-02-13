@@ -6,14 +6,14 @@ using System;
 using WebApp.Filters;
 
 namespace WebApp.Controllers {
-    [HttpsOnly]
-    //[ResultDiagnostics]
-    [ResultDiagnosticsTwo]
+    //[HttpsOnly]
+    [ResultDiagnostics]
+    //[ResultDiagnosticsTwo]
     //[GuidResponse]
     //[GuidResponse]
     //[GuidResponse]
-    [GuidResponseTwo]
-    [GuidResponseTwo]
+   //[GuidResponseTwo]
+    //[GuidResponseTwo]
     public class HomeController : Controller {
        
         public IActionResult Index() {

@@ -11,3 +11,6 @@
   1. what is scope?
   2. AddScoped() means one scope only create one instance.
   3. In the second screen, even through I used 3 browsers, but they all come from the same machine, the requests are same.   same IP..
+
+# Global filter
+  Notice the "HttpsOnly" filter will generate a Result,  which will be filtered by "GuidResponse" result filter.  so that need to comment "GuidResponse"
