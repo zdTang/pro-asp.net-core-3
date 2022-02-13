@@ -65,7 +65,8 @@ namespace Platform {
             //branch
             app.MapWhen(context=>context.Request.Query.Keys.Contains("branch"), branch =>
             {
-                branch.UseMiddleware<QueryStringMiddleWare>();
+                //branch.UseMiddleware<QueryStringMiddleWare>();
+                branch.Run(new QueryStringMiddleWare().Invoke);  // Invoke is the method of middleware
                 branch.Run(async (context) =>
                 {
                     await context.Response.WriteAsync($"Branch Middleware");

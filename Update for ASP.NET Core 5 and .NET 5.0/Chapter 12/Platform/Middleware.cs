@@ -22,6 +22,8 @@ namespace Platform {
                         && context.Request.Query["custom"] == "true") {
                 await context.Response.WriteAsync("Class-based Middleware \n");
             }
+            // Class-based middleware can be used as normal or Terminal Middleware 
+            // As it can deal with the "next" either it has value or not
             if (next != null) { // next can be Null if use parameterless Constructor
                 await next(context);
             }
