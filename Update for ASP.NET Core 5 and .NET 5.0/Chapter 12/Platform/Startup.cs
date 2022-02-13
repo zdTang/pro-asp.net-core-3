@@ -63,7 +63,7 @@ namespace Platform {
                 await context.Response.WriteAsync($"\n Custom Middleware2 --Status Code:{context.Response.StatusCode}");
             });
             //branch
-            app.Map("/branch", branch =>
+            app.MapWhen(context=>context.Request.Query.Keys.Contains("branch"), branch =>
             {
                 branch.UseMiddleware<QueryStringMiddleWare>();
                 branch.Use(async (context, next) =>
