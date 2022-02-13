@@ -66,10 +66,10 @@ namespace Platform {
             app.MapWhen(context=>context.Request.Query.Keys.Contains("branch"), branch =>
             {
                 branch.UseMiddleware<QueryStringMiddleWare>();
-                branch.Use(async (context, next) =>
+                branch.Run(async (context) =>
                 {
                     await context.Response.WriteAsync($"Branch Middleware");
-                    // Here not pass to next()
+                    // By using "Run" explicitly, no opportunity to pass the execution to "next"
                 });
             });
             
