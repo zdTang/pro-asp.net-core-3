@@ -6,11 +6,13 @@ namespace Platform {
 
     public class QueryStringMiddleWare {
         private RequestDelegate next;
-
+        
+        //why we need a parameterless constructor here ?
         public QueryStringMiddleWare() {
             // do nothing
         }
-
+        
+        //Who will instantiate this middleware
         public QueryStringMiddleWare(RequestDelegate nextDelegate) {
             next = nextDelegate;
         }
@@ -20,7 +22,7 @@ namespace Platform {
                         && context.Request.Query["custom"] == "true") {
                 await context.Response.WriteAsync("Class-based Middleware \n");
             }
-            if (next != null) {
+            if (next != null) { // next can be Null if use parameterless Constructor
                 await next(context);
             }
         }

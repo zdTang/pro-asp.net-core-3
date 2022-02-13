@@ -20,11 +20,13 @@ namespace Platform {
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 
-            if (env.IsDevelopment()) {
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
             }
-// Create a custom Middle ware
-// Be aware how to use "Use()", this is a expendation method
+
+            // Create a custom Middle ware: Approach one
+            // The downside of this approach is it is not easy to re-use this middleware
             app.Use(async (context, next) =>
             {
                 if(context.Request.Method==HttpMethods.Get && context.Request.Query["custom"]=="true")
@@ -33,7 +35,8 @@ namespace Platform {
                 }
                 await next();
             });
-
+            //Add custom middleware: Approach two
+            app.UseMiddleware<QueryStringMiddleWare>();
             //app.UseMiddleware<LocationMiddleware>();
 
             app.UseRouting();
