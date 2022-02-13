@@ -6,6 +6,7 @@ using WebApp.Models;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Filters;
 
 namespace WebApp {
     public class Startup {
@@ -32,6 +33,8 @@ namespace WebApp {
 
             services.Configure<MvcOptions>(opts => opts.ModelBindingMessageProvider
                 .SetValueMustNotBeNullAccessor(value => "Please enter a value"));
+
+            services.AddScoped<GuidResponseTwoAttribute>();
         }
 
         public void Configure(IApplicationBuilder app, DataContext context,

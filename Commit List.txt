@@ -5,3 +5,9 @@
 
 # Exception Filter
   Try the code, very beautiful, can handle the Exception!
+# Manage the Filter Lifecycle
+
+# Using DI scope to manage Filter Lifecycles
+  1. what is scope?
+  2. AddScoped() means one scope only create one instance.
+  3. In the second screen, even through I used 3 browsers, but they all come from the same machine, the requests are same.   same IP..
