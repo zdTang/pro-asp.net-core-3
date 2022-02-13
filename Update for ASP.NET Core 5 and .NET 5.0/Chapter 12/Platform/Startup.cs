@@ -33,6 +33,22 @@ namespace Platform {
                 await context.Response.WriteAsync($"\n Custom Middleware1 --Status Code:{context.Response.StatusCode}");
             });
             
+            // Short-Circuiting
+
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.ToString() == "/short")
+                {
+                    await context.Response.WriteAsync($"Request Short Circuited");
+                    // short-circuiting the sequential middleware at this point !
+                    // Be aware, here we are not pass execution to next() any more !!
+                }
+                else
+                {
+                    await next();
+                }
+                
+            });
             
             
             // Create a custom Middle ware: Approach one
