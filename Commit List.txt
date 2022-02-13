@@ -18,3 +18,7 @@
 # Change the Filter Order
   1. Use "Order" property  -1,0,1,2,3  sequential order
   2. the Attribute must inherit "IOrderedFilter" interface
+
+# use Options Pattern to configure middleware
+  1, Define a default option class and assign default valut
+  2, Reference this Option object and update the value based on our logic and use case.

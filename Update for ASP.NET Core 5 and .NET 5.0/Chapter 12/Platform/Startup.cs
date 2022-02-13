@@ -14,18 +14,19 @@ namespace Platform {
 
         public void ConfigureServices(IServiceCollection services) {
             services.Configure<MessageOptions>(options => {
-                options.CityName = "Albany";
+                options.CityName = "Albany";  // Dependency Injection and override the default value as well  
             });
         }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+        
+        // pass IOptions parameter to this method.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<MessageOptions> msgOptions) {
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             // Test middleware work with return pipeline
-
+             /*
             app.Use(async (context, next) =>
             {
                 await context.Response.WriteAsync("Custom Middleware1 --coming \n");
@@ -50,7 +51,27 @@ namespace Platform {
                 
             });
             
-            
+            */
+             // Configuration with options pattern
+
+             app.Use(async (context, next) =>
+             {
+                 if (context.Request.Path.ToString() == "/location")
+                 {
+                     MessageOptions opts = msgOptions.Value;
+                     await context.Response.WriteAsync($"{opts.CountryName},{opts.CityName}");
+                     // short-circuiting the sequential middleware at this point !
+                     // Be aware, here we are not pass execution to next() any more !!
+                 }
+                 else
+                 {
+                     await next();
+                 }
+                
+             });
+             
+             
+            /*
             // Create a custom Middle ware: Approach one
             // The downside of this approach is it is not easy to re-use this middleware
             app.Use(async (context, next) =>
@@ -75,10 +96,10 @@ namespace Platform {
             });
             
             
-            
+            */
             
             //Add custom middleware: Approach two
-            app.UseMiddleware<QueryStringMiddleWare>();
+            //app.UseMiddleware<QueryStringMiddleWare>();
             //app.UseMiddleware<LocationMiddleware>();
 
             app.UseRouting();
