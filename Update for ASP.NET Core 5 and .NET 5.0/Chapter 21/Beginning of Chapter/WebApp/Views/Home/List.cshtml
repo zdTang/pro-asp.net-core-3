@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Product>
-
+@{
+    // operate DataModel directly !
+    decimal average = Model.Average(p => p.Price);
+}
 <!DOCTYPE html>
 
 <html>
@@ -24,6 +27,7 @@
             <tr>
                 <td>@p.Name</td>
                 <td>@p.Price</td>
+                <td>@((p.Price/average*100).ToString("F1"))% of average</td>
             </tr>
         }
         </tbody>
