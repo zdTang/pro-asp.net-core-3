@@ -12,11 +12,17 @@ namespace WebApp.Controllers
             context = ctx;
         }
         // GET
-        public async Task<IActionResult> Index(long id=1)
+        public async Task<IActionResult> Index(long id = 1)
         {
-            
-            //View will generate a IActionResult by which Response can be generated 
-            return View(await context.Products.FindAsync(id));
+            Product prod = await context.Products.FindAsync(id);
+            if (prod.CategoryId == 1)
+            {
+                return View("WaterSports", prod);
+            }
+            else
+            {
+                return View(prod);
+            }
         }
     }
 }
