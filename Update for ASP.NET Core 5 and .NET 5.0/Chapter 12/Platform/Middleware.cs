@@ -33,7 +33,7 @@ namespace Platform {
     public class LocationMiddleware {
         private RequestDelegate next;
         private MessageOptions options;
-
+        // pass Option to the constructor
         public LocationMiddleware(RequestDelegate nextDelegate,
                 IOptions<MessageOptions> opts) {
             next = nextDelegate;
@@ -43,7 +43,7 @@ namespace Platform {
         public async Task Invoke(HttpContext context) {
             if (context.Request.Path == "/location") {
                 await context.Response
-                    .WriteAsync($"{options.CityName}, {options.CountryName}");
+                    .WriteAsync($"the new location is : {options.CityName}, {options.CountryName}");
             } else {
                 await next(context);
             }

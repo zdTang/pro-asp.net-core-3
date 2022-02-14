@@ -50,8 +50,8 @@ namespace Platform {
                 }
                 
             });
+                 
             
-            */
              // Configuration with options pattern
 
              app.Use(async (context, next) =>
@@ -59,7 +59,7 @@ namespace Platform {
                  if (context.Request.Path.ToString() == "/location")
                  {
                      MessageOptions opts = msgOptions.Value;
-                     await context.Response.WriteAsync($"{opts.CountryName},{opts.CityName}");
+                     await context.Response.WriteAsync($"this is {opts.CountryName},{opts.CityName}");
                      // short-circuiting the sequential middleware at this point !
                      // Be aware, here we are not pass execution to next() any more !!
                  }
@@ -70,7 +70,7 @@ namespace Platform {
                 
              });
              
-             
+        */
             /*
             // Create a custom Middle ware: Approach one
             // The downside of this approach is it is not easy to re-use this middleware
@@ -100,7 +100,7 @@ namespace Platform {
             
             //Add custom middleware: Approach two
             //app.UseMiddleware<QueryStringMiddleWare>();
-            //app.UseMiddleware<LocationMiddleware>();
+            app.UseMiddleware<LocationMiddleware>();
 
             app.UseRouting();
 
