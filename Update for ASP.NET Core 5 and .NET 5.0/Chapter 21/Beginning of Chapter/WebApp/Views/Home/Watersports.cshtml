@@ -27,6 +27,17 @@
                 <td>Basic @Model.Name</td>
             </tr>
         }
+        
+        @switch (Model.Name)
+        {
+            case "Kayak":<tr><th>Name</th><td>Small Boat</td></tr>
+                break;
+            case "Lifejacket":<tr><th>Name</th><td>Flotation Aid</td></tr>
+                break;
+            default:<tr><th>Name</th><td>@Model.Name</td></tr>
+                break;
+        }
+        
         <tr>
             <th>Name</th>
             <td>@Model.Name</td>
