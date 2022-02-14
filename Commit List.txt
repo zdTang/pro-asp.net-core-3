@@ -37,3 +37,5 @@
 
 #    @(Model.Price * 2).   Notice how to use ()
 
+#    @:Static code  ==  this synatx can reference literal or static code
+
