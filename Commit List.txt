@@ -35,3 +35,5 @@
 
 # 21 _ViewImport.cshtml,   This file is in the "Views" folder other than "Shared" folder.
 
+#    @(Model.Price * 2).   Notice how to use ()
+
