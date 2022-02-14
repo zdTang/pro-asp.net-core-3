@@ -39,3 +39,8 @@
 
 #    @:Static code  ==  this synatx can reference literal or static code
 
+# 21 Enumerating Sequence
+  1, for those result from Database, using @model IEnumerable<Product> as binding data model
+
+# 22 ViewBag 
+  cannot check if data type is correct or not
