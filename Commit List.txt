@@ -29,3 +29,6 @@
 
 # 21. Shared View
   by Convention, View engine will search VIEW from those folders: Views--[ControllerNameFolder],Views--[Shared]
+
+#     Generated View Class
+     Action => Action Result => View Class => HTML Response

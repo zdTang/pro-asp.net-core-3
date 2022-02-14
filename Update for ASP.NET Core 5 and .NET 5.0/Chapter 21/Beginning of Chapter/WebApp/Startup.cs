@@ -34,7 +34,7 @@ namespace WebApp {
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
             });
-            SeedData.SeedDatabase(context);
+            //SeedData.SeedDatabase(context);
         }
     }
 }
