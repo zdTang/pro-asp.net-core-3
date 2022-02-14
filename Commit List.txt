@@ -30,5 +30,8 @@
 # 21. Shared View
   by Convention, View engine will search VIEW from those folders: Views--[ControllerNameFolder],Views--[Shared]
 
-#     Generated View Class
+# 21   Generated View Class
      Action => Action Result => View Class => HTML Response
+
+# 21 _ViewImport.cshtml,   This file is in the "Views" folder other than "Shared" folder.
+
