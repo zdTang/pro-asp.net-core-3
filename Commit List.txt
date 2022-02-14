@@ -22,3 +22,7 @@
 # use Options Pattern to configure middleware
   1, Define a default option class and assign default valut
   2, Reference this Option object and update the value based on our logic and use case.
+
+# 21 controller and Views
+  To using MVC, we need to add extra Services.
+  services.AddControllers() can support WebAPI, but it don't support MVC,   Razor view or Razor page.

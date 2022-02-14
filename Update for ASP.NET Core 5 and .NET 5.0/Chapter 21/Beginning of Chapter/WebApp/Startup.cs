@@ -22,7 +22,8 @@ namespace WebApp {
                     "ConnectionStrings:ProductConnection"]);
                 opts.EnableSensitiveDataLogging(true);
             });
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, DataContext context) {
@@ -31,6 +32,7 @@ namespace WebApp {
             app.UseRouting();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
             });
             SeedData.SeedDatabase(context);
         }
