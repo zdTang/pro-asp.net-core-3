@@ -26,3 +26,6 @@
 # 21 controller and Views
   To using MVC, we need to add extra Services.
   services.AddControllers() can support WebAPI, but it don't support MVC,   Razor view or Razor page.
+
+# 21. Shared View
+  by Convention, View engine will search VIEW from those folders: Views--[ControllerNameFolder],Views--[Shared]
