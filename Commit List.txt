@@ -56,3 +56,6 @@
 
 # 22 ViewBag data precedence
   ViewBag is dynamic data type, using one property, it can be assign several times. the later assignment will override the previous one.
+
+# 22, List.cshtml have all html element, so that it need not Layout,  just set Layout=null
+      use @section to specify location in the layout file
