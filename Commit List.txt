@@ -59,3 +59,8 @@
 
 # 22, List.cshtml have all html element, so that it need not Layout,  just set Layout=null
       use @section to specify location in the layout file
+
+# 22，using Partial View
+      1, using partial view need enable tag-helper in the ViewImport file
+      2, partial view is just normal View file. The difference is how to use it.
+      3, Can use "model" and "view-data" to pass data to partial view.
