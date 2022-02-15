@@ -47,3 +47,9 @@
 
 # 22 ViewData and Layout
   Defination of viewData:  public ViewDataDictionary<TModel> ViewData { get; set; }
+
+# 22 ViewBag pass data to Layout
+   viewBay defination: public dynamic ViewBag => ViewContext?.ViewBag;
+   ??, ??= The null-coalescing operator ?? returns the value of its left-hand operand if it isn't null; otherwise, 
+           it evaluates the right-hand operand and returns its result. 
+           The ?? operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null.
