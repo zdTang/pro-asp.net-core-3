@@ -53,3 +53,6 @@
    ??, ??= The null-coalescing operator ?? returns the value of its left-hand operand if it isn't null; otherwise, 
            it evaluates the right-hand operand and returns its result. 
            The ?? operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null.
+
+# 22 ViewBag data precedence
+  ViewBag is dynamic data type, using one property, it can be assign several times. the later assignment will override the previous one.
