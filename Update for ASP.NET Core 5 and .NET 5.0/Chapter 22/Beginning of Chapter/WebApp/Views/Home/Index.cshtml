@@ -1,6 +1,6 @@
 ﻿@model Product
 @{
-    Layout = "_Layout";
+    Layout = "_ImportantLayout";
     //ViewData["Title"] = "Mike is learning";
     ViewBag.Title = ViewBag.Title ?? "Product Table";
 }
@@ -12,7 +12,7 @@
                 <th>Price</th>
                 <td>
                     @Model.Price.ToString("c")
-                    (@(((Model.Price/ViewBag.AveragePrice)*100).ToString("F1"))% of average)
+                    (@(((Model.Price/ViewBag.AveragePrice)*100).ToString("F2"))% of average)
                 </td>
             </tr>
                 <tr><th>Category ID</th><td>@Model.CategoryId</td></tr>
