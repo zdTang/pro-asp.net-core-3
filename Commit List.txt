@@ -44,3 +44,6 @@
 
 # 22 ViewBag 
   cannot check if data type is correct or not
+
+# 22 ViewData and Layout
+  Defination of viewData:  public ViewDataDictionary<TModel> ViewData { get; set; }
