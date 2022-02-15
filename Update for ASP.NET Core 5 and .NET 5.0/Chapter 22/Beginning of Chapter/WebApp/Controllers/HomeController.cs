@@ -16,7 +16,7 @@ namespace WebApp.Controllers {
         public async Task<IActionResult> Index(long id = 1)
         {
             ViewBag.AveragePrice = await context.Products.AverageAsync(P => P.Price);
-            ViewBag.Title = "Mike is great!";
+            ViewBag.Title = "Mike is great! - Title from Action via ViewBag";
             return View(await context.Products.FindAsync(id));
         }
 

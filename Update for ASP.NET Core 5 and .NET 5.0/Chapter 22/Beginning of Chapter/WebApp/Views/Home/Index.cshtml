@@ -1,6 +1,6 @@
 ﻿@model Product
 @{
-    Layout = "_ImportantLayout";
+    Layout = Model.Price>100 ? "_ImportantLayout" : "_Layout";
     //ViewData["Title"] = "Mike is learning";
     ViewBag.Title = ViewBag.Title ?? "Product Table";
 }
