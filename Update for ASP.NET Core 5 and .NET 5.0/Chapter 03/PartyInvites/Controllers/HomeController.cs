@@ -9,7 +9,7 @@ namespace PartyInvites.Controllers {
             return View();
         }
 
-        [HttpGet]
+        //[HttpGet]
         public ViewResult RsvpForm() {
             return View();
         }
