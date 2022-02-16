@@ -19,7 +19,8 @@ namespace MyProject {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            // This middleware will access static folder the response static file directly
             app.UseStaticFiles();
             app.UseRouting();
 
