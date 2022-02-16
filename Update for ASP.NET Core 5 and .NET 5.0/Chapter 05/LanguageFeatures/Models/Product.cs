@@ -8,7 +8,7 @@
         public string Name { get; set; }
         public string Category { get; set; } = "Watersports";
         public decimal? Price { get; set; }
-        public Product Related { get; set; }
+        public Product Related { get; set; }   // Notice the Type is "Product"
         public bool InStock { get; }
         public bool NameBeginsWithS => Name?[0] == 'S';
 
@@ -25,7 +25,8 @@
                 Price = 48.95M
             };
 
-            kayak.Related = lifejacket;
+            kayak.Related = lifejacket;     //  Notice how to define relationship within a Type definition itself ! 
+            
             // There is a Null record here !
             return new Product[] { kayak, lifejacket, null };
         }

@@ -16,7 +16,8 @@ namespace LanguageFeatures.Controllers {
                 // Using Null conditional operator to avoid NullReferenceException
                 string name = p?.Name;
                 decimal? price = p?.Price;
-                results.Add(string.Format("Name:{0},Price:{1}", name, price));
+                string relatedName = p?.Related?.Name;   //chain Null Conditional operator
+                results.Add(string.Format("Name:{0},Price:{1},Related:{2}", name, price,relatedName));
             }
 
             return View(results);
