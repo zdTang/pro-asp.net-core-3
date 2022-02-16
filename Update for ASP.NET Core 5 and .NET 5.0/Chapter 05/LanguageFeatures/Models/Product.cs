@@ -26,7 +26,7 @@
             };
 
             kayak.Related = lifejacket;
-
+            // There is a Null record here !
             return new Product[] { kayak, lifejacket, null };
         }
     }
