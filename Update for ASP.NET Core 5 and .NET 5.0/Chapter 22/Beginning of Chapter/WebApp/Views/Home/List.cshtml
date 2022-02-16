@@ -3,6 +3,7 @@
     decimal average = Model.Average(p => p.Price);
     // if the view has complate HTML element, set Layout as null to avoid duplication
     Layout = null;
+    Func<Product, object> row = @<tr><td>@item.Name</td><td>@item.Price</td></tr>;
 }
 <!DOCTYPE html>
 <html>
@@ -25,8 +26,10 @@
                     </tr>
                     
                     @Html.Partial("_RowPartial")  // using HTML helper to reference partial view is still OK
-                    *@
+                    
                     <partial name="_RowPartial" model="p"/>
+                    *@
+                    @row(p)
                 }
             </tbody>
         </table>
