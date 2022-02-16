@@ -28,9 +28,11 @@
         </div>
         <div class="form-group">
             @* <label asp-for="Phone">Your phone:</label> *@
-             <label asp-for="Phone"></label>
+            <label asp-for="Phone"></label>
             <input asp-for="Phone" class="form-control" />
         </div>
+        
+        @* Here to bind with a Boolean value *@
         <div class="form-group">
             <label>Will you attend?</label>
             <select asp-for="WillAttend" class="form-control">

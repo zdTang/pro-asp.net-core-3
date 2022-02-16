@@ -17,6 +17,8 @@ namespace PartyInvites.Models {
         [Required(ErrorMessage = "Please enter your phone number")]
         public string Phone { get; set; }
 
+        //a BOOL value will work with checkBOX Html control
+        
         [Required(ErrorMessage = "Please specify whether you'll attend")]
         public bool? WillAttend { get; set; }
     }
