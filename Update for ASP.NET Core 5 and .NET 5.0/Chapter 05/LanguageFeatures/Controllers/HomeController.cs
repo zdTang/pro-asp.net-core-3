@@ -10,9 +10,18 @@ namespace LanguageFeatures.Controllers {
 
         public ViewResult Index()
         {
+            var results = new List<string>();
+            foreach (Product p in Product.GetProducts())
+            {
+                // Using Null conditional operator to avoid NullReferenceException
+                string name = p?.Name;
+                decimal? price = p?.Price;
+                results.Add(string.Format("Name:{0},Price:{1}", name, price));
+            }
 
+            return View(results);
 
-            return View(new string[] {"c#","Language","Features"});
+            //return View(new string[] {"c#","Language","Features"});
             /*var products = new[] {
                 new { Name = "Kayak", Price = 275M },
                 new { Name = "Lifejacket", Price = 48.95M },
