@@ -1,6 +1,8 @@
 ﻿@model Product
 
 <tr>
-    <td>@Model.Name</td>
+    @* <td>@Model.Name</td> *@
+    @* Notice there is a Product Model up there , here specify "Name" of that Model*@
+    <partial name="_CellPartial" for="Name"/>
     <td>@Model.Price</td>
 </tr>
