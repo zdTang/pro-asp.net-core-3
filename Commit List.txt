@@ -64,3 +64,8 @@
       1, using partial view need enable tag-helper in the ViewImport file
       2, partial view is just normal View file. The difference is how to use it.
       3, Can use "model" and "view-data" to pass data to partial view.
+
+#  5  read-only property and constructor
+      1, The value of read-only peoperty can only be changed via Constructor or initializer
+      2, We can set a default value via Constructor
+      3, We can also set a default value via default value
