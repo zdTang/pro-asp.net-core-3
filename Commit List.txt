@@ -74,3 +74,9 @@
 #  5   read-only approach two ---don't use [Constructor + optional parameter] to init readonly
                 {get; init;} ===> can use initializer
                 {get;}       ===> cannot use initializer
+
+#  6  Test
+      Moq Documentation: https://documentation.help/Moq/
+      
+#  6  Test One
+      Test passed, but it is useless! also, it used its dependency.

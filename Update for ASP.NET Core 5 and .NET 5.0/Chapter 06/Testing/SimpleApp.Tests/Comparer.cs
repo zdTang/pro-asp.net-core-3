@@ -5,6 +5,7 @@ namespace SimpleApp.Tests {
 
     public class Comparer {
 
+        // this Get method will return a generic Comparer
         public static Comparer<U> Get<U>(Func<U, U, bool> func) {
             return new Comparer<U>(func);
         }
