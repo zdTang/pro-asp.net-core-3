@@ -12,7 +12,7 @@ namespace SimpleApp {
     public class Startup {
 
         public void ConfigureServices(IServiceCollection services) {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();// can use MVC
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
@@ -23,7 +23,7 @@ namespace SimpleApp {
             app.UseRouting();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapDefaultControllerRoute();    //MVC default route 
                 //endpoints.MapGet("/", async context => {
                 //    await context.Response.WriteAsync("Hello World!");
                 //});

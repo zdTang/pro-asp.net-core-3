@@ -7,7 +7,8 @@ namespace SimpleApp.Controllers {
 
 
         public ViewResult Index() {
-            return View(dataSource.Products);
+            //return View(dataSource.Products);
+            return View(Product.GetProducts());
         }
     }
 }
