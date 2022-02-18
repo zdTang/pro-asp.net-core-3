@@ -1,9 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@{
+    // ViewData doesn't work here, as it is not dynamic, it is dictionary of Object
+    // if ViewData has no "Title" on it, Error will happen
+    // While ViewBag is dynamic and can add any key
+    // https://www.c-sharpcorner.com/blogs/viewdata-vs-viewbag-vs-tempdata-in-mvc1
+    
+    ViewBag.Title = ViewBag.Title ?? "SportStore";
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width"/>
     <title>
-        @{ViewData["Title"] ?? "SportsStore"}
+        @ViewBag.Title
     </title>
 </head>
 <body>
