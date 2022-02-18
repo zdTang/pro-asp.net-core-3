@@ -82,3 +82,6 @@
       Test passed, but it is useless! also, it used its dependency.
 
 #  6  Unit Testing - using a fake implementation of the IDataSource. lets us using any test data other than real data.
+
+# 7  Connect to localDB
+     https://stackoverflow.com/questions/12534454/how-to-connect-to-localdb
