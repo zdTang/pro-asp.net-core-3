@@ -8,7 +8,7 @@ namespace SportsStore.Models
     public static class SeedData
     {
         // IApplicationBuilder is used for setup pipeline, such as middleware
-        public static void EnsurePopulated(IApplicationBuilder app)
+        public async static void EnsurePopulated(IApplicationBuilder app)
         {
             // Access Dbcontext via app
             // Can we access DbContext via DI ?
@@ -16,9 +16,11 @@ namespace SportsStore.Models
                 .GetRequiredService<StoreDbContext>();
             
 
-            if (context.Database.GetPendingMigrations().Any())
+            //if (context.Database.GetPendingMigrations().Any())
+            if (context.Database.GetPendingMigrationsAsync().GetAwaiter().GetResult().Any())
             {
-                context.Database.Migrate();
+                //context.Database.Migrate();
+                await context.Database.MigrateAsync();
             }
 
             if (!context.Products.Any())
@@ -67,7 +69,8 @@ namespace SportsStore.Models
                         Description = "Gold-plated, diamond-studded King",
                         Category = "Chess", Price = 1200
                     });
-                context.SaveChanges();
+                //context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
     }

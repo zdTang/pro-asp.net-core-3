@@ -88,3 +88,12 @@
 
 # 7  Migration  + Seeding : approach one
      using IApplicationBuilder to get DbContext object, let me try if I can use DI to access DbContext
+
+# 7  Migration  + Seeding : approach two
+     using DI to access DbContext instance. this approach works too !
+
+# 7  Migration  + Seeding : approach three
+     using IApplicationBuilder to get DbContext object
+     used a bunch of asynchronous method to operate Database.
+     Should use "await" to make operations sequentially. create database--create-table--seeding....   this order
+     if don't use "await",  the order will be a mess.   that's wahy error happened.
