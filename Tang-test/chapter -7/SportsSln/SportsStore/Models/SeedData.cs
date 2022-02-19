@@ -8,13 +8,17 @@ namespace SportsStore.Models
     public static class SeedData
     {
         // IApplicationBuilder is used for setup pipeline, such as middleware
-        public static void EnsurePopulated(IApplicationBuilder app)
+        //public static void EnsurePopulated(IApplicationBuilder app)
+
+        private static StoreDbContext context;
+        public static void EnsurePopulated(StoreDbContext dbContext)
         {
             // Access Dbcontext via app
             // Can we access DbContext via DI ?
-            StoreDbContext context = app.ApplicationServices.CreateScope().ServiceProvider
-                .GetRequiredService<StoreDbContext>();
-            
+            context = dbContext;
+            // StoreDbContext context = app.ApplicationServices.CreateScope().ServiceProvider
+            //     .GetRequiredService<StoreDbContext>();
+            //
 
             if (context.Database.GetPendingMigrations().Any())
             {
