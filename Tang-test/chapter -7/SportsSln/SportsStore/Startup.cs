@@ -32,6 +32,12 @@ namespace SportsStore
             {
                 opts.UseSqlServer(Configuration["ConnectionStrings:SportsStoreConnection"]);
             });*/
+            
+            // By using Repository Pattern. we define an Interface and implement it 
+            // We then register it as service
+            // We can rely on Interface other than an solid implementation by DI
+            
+            services.AddScoped<IStoreRepository, EFStoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
