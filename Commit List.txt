@@ -85,3 +85,6 @@
 
 # 7  Connect to localDB
      https://stackoverflow.com/questions/12534454/how-to-connect-to-localdb
+
+# 7  Migration  + Seeding : approach one
+     using IApplicationBuilder to get DbContext object, let me try if I can use DI to access DbContext
