@@ -1,13 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SportsStore.Models;
 
 namespace SportsStore.Controllers
 {
     public class HomeController : Controller
     {
-        // GET
-        public IActionResult Index()
+        private IStoreRepository repository;
+
+        public HomeController(IStoreRepository repo)
         {
-            return View();
+            repository = repo;
         }
+        // GET
+        public IActionResult Index()=>View(repository.Products);
+        
     }
 }
