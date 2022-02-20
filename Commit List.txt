@@ -97,3 +97,11 @@
      used a bunch of asynchronous method to operate Database.
      Should use "await" to make operations sequentially. create database--create-table--seeding....   this order
      if don't use "await",  the order will be a mess.   that's wahy error happened.
+
+#7   Create a tag helper to be used for creating Pagination
+     1, Create tag helper: be aware the tagFactory has been registed by the framework already
+     2, Added a middleware to display all available registed services.(https://ardalis.com/how-to-list-all-services-available-to-an-asp-net-core-app/)
+     3, Understand the pagination: what are in the nutshell.   
+           a.  Data Model to display page information
+           b,  Page number represented with <a> and <href> can pass different page number with URL( Get request)
+           c,  In the action, can generate different ViewModel based on the Page Number

@@ -6,7 +6,9 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
 
@@ -15,6 +17,7 @@ namespace SportsStore
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        private IServiceCollection _services;
         
         public Startup(IConfiguration configuration)
         {
@@ -25,6 +28,7 @@ namespace SportsStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _services = services;
             services.AddControllersWithViews();
             services.AddDbContext<StoreDbContext>();
             // Configure DbContext option one
@@ -56,6 +60,26 @@ namespace SportsStore
             app.UseStaticFiles();
 
             app.UseRouting();
+            
+            // add this if you want to add this for a particular path in an existing app
+            app.Map("/allservices", builder => builder.Run(async context =>
+            {
+                var sb = new StringBuilder();
+                sb.Append("<h1>All Services</h1>");
+                sb.Append("<table><thead>");
+                sb.Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>");
+                sb.Append("</thead><tbody>");
+                foreach(var svc in _services)
+                {
+                    sb.Append("<tr>");
+                    sb.Append($"<td>{svc.ServiceType.FullName}</td>");
+                    sb.Append($"<td>{svc.Lifetime}</td>");
+                    sb.Append($"<td>{svc.ImplementationType?.FullName}</td>");
+                    sb.Append("</tr>");
+                }
+                sb.Append("</tbody></table>");
+                await context.Response.WriteAsync(sb.ToString());
+            }));
 
             //app.UseAuthorization();
 
