@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using SportsStore.Controllers;
 using SportsStore.Models;
+using SportsStore.Models.ViewModels;
 using Xunit;
 
 namespace SportsStore.Tests
@@ -31,10 +32,10 @@ namespace SportsStore.Tests
             // Action
             // Here is the key, we need to cast data type so that we can operate
             // IS vs AS : https://www.geeksforgeeks.org/is-vs-as-operator-keyword-in-c-sharp/
-            IEnumerable<Product> result=(controller.Index() as ViewResult)?.ViewData.Model as IEnumerable<Product>;
+            ProductsListViewModel result=(controller.Index() as ViewResult)?.ViewData.Model as ProductsListViewModel;
             
             // Assertion
-            Product[] prodArray = result?.ToArray();
+            Product[] prodArray = result?.Products?.ToArray();
             Assert.True(prodArray?.Length==2);
             Assert.Equal("book",prodArray[0].Description);
             Assert.Equal("Bike",prodArray[1].Description);
@@ -68,9 +69,9 @@ namespace SportsStore.Tests
             var controller = new HomeController(mock.Object);
             controller.PageSize = 3;
             //Action
-            var result = (controller.Index(2) as ViewResult)?.ViewData?.Model as IEnumerable<Product>;
+            var result = (controller.Index(2) as ViewResult)?.ViewData?.Model as ProductsListViewModel;
             //Assertion
-            var prodArray = result?.ToArray();
+            var prodArray = result?.Products?.ToArray();
             Assert.True(prodArray?.Length==3);
             Assert.Equal("p4", prodArray[0].Name);
             Assert.Equal("p5", prodArray[1].Name);
