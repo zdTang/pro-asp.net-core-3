@@ -26,6 +26,10 @@ namespace SportsStore.Infrastructure
         public ViewContext ViewContext { set; get; }
         public PagingInfo PageModel { get; set; } // this will be a attribute of <div>
         public string PageAction { get; set; }    // this will be a attribute of <div>
+        public bool PageClassesEnabled { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
 /// <summary>
 /// Here is the key !! here be dragons
 /// </summary>
@@ -42,6 +46,12 @@ namespace SportsStore.Infrastructure
                 TagBuilder tag = new TagBuilder("a");
                 //PageAction will work with Action to create a URL to Action
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { productPage = i });
+                if (PageClassesEnabled)
+                {
+                    tag.AddCssClass(PageClass);
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
+                
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }
