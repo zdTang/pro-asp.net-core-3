@@ -21,10 +21,11 @@ namespace SportsStore.Controllers
         /// <param name="productPage"></param>
         /// <returns></returns>
         // GET
-        public IActionResult Index(int productPage = 1)
+        public IActionResult Index(string category, int productPage = 1)
         {
-            var products = repository
-                .Products.OrderBy(o => o.ProductId)
+            var products = repository.Products
+                .Where(p=>category==null||p.Category==category)
+                .OrderBy(o => o.ProductId)
                 .Skip((productPage - 1) * PageSize)
                 .Take(PageSize);
 
