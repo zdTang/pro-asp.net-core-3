@@ -105,3 +105,6 @@
            a.  Data Model to display page information
            b,  Page number represented with <a> and <href> can pass different page number with URL( Get request)
            c,  In the action, can generate different ViewModel based on the Page Number
+
+#    Change from QueryString to a new Route
+     How the new URL changed automatically???? -- we should understand how the TagHelper works
