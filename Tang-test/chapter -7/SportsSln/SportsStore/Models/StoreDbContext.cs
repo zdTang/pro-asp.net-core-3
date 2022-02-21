@@ -16,7 +16,8 @@ namespace SportsStore.Models
         // Approach two: 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Configuration["ConnectionStrings:SportsStoreConnection"]);
+            //optionsBuilder.UseSqlServer(Configuration["ConnectionStrings:SportsStoreConnection"]);
+            optionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
         }
     }
 }
