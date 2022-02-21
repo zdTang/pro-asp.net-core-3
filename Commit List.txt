@@ -112,3 +112,8 @@
 # 8  1, unit test for filter --- vert important!
      2, ViewResult is derived from ActionResult
      3, changed Database to remote database on other computer--> Be care of the ConnectionString
+
+#8   Refining the URL
+     1, How are URLs mapping the specified Actions.. 
+     2, How Tag Helper IUrlHeper interface provide URL-generating functions
+     3, This tag helper is complex, try to understand it.
