@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using SportsStore.Models;
 
 namespace SportsStore.Components
 {
@@ -9,9 +11,19 @@ namespace SportsStore.Components
     /// </summary>
     public class NavigationMenuViewComponent:ViewComponent
     {
-        public string Invoke()
+        private IStoreRepository _repository;
+
+        public NavigationMenuViewComponent(IStoreRepository repo)
         {
-            return "Hello, Mike from the Nav View Component";
+            _repository = repo;
+        }
+        public IViewComponentResult Invoke()
+        {
+            // choose unique Category and order by Category
+            return View(_repository.Products
+                .Select(x=>x.Category)
+                .Distinct()
+                .OrderBy(x=>x));
         }
     }
 }
