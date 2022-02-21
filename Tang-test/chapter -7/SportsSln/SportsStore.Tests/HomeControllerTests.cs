@@ -12,6 +12,10 @@ namespace SportsStore.Tests
 {
     public class ProductControllerTests
     {
+        public ProductControllerTests()
+        {
+            // Put common used stuff here !
+        }
         [Fact]
         public void Can_Use_Repository()
         {
@@ -32,7 +36,7 @@ namespace SportsStore.Tests
             // Action
             // Here is the key, we need to cast data type so that we can operate
             // IS vs AS : https://www.geeksforgeeks.org/is-vs-as-operator-keyword-in-c-sharp/
-            ProductsListViewModel result=(controller.Index() as ViewResult)?.ViewData.Model as ProductsListViewModel;
+            ProductsListViewModel result=(controller.Index(null) as ViewResult)?.ViewData.Model as ProductsListViewModel;
             
             // Assertion
             Product[] prodArray = result?.Products?.ToArray();
@@ -69,12 +73,73 @@ namespace SportsStore.Tests
             var controller = new HomeController(mock.Object);
             controller.PageSize = 3;
             //Action
-            var result = (controller.Index(2) as ViewResult)?.ViewData?.Model as ProductsListViewModel;
+            var result = (controller.Index(null,2) as ViewResult)?.ViewData?.Model as ProductsListViewModel;
             //Assertion
             var prodArray = result?.Products?.ToArray();
             Assert.True(prodArray?.Length==3);
             Assert.Equal("p4", prodArray[0].Name);
             Assert.Equal("p5", prodArray[1].Name);
+        }
+
+        [Fact]
+        public void Can_Send_Pagination_View_Model()
+        {
+            //Arrange
+            var mock = new Mock<IStoreRepository>();
+            var products = new Product[]
+            {
+                new Product() { ProductId = 1, Name = "p1" },
+                new Product() { ProductId = 2, Name = "p2" },
+                new Product() { ProductId = 3, Name = "p3" },
+                new Product() { ProductId = 4, Name = "p4" },
+                new Product() { ProductId = 5, Name = "p5" }
+            };
+            mock.Setup(m => m.Products).Returns(products.AsQueryable<Product>());
+            
+            // Arrange
+            HomeController controller = new HomeController(mock.Object) { PageSize = 3 };
+            
+            // Act
+            // Notice  if no "as", we cannot retrieve ViewData
+            ProductsListViewModel result = (controller.Index(null, 2) as ViewResult)?.ViewData.Model as ProductsListViewModel;
+            
+            //Assert
+            PagingInfo pageInfo = result?.PagingInfo;
+            Assert.Equal(2, pageInfo?.CurrentPage);
+            Assert.Equal(3, pageInfo?.ItemsPerPage);
+            Assert.Equal(5, pageInfo?.TotalItems);
+            Assert.Equal(2, pageInfo?.TotalPages);
+
+        }
+
+        [Fact]
+        public void Can_Filter_Products()
+        {
+            //Arrange
+            //Create the mock repository
+            var mock = new Mock<IStoreRepository>();
+            var fake = new Product[]
+            {
+                new Product() { ProductId = 1, Name = "p1",Category="Cat1" },
+                new Product() { ProductId = 2, Name = "p2",Category="Cat2"},
+                new Product() { ProductId = 3, Name = "p3",Category="Cat1" },
+                new Product() { ProductId = 4, Name = "p4",Category="Cat2"},
+                new Product() { ProductId = 5, Name = "p5",Category="Cat3" }
+            };
+            mock.Setup(x => x.Products).Returns(fake.AsQueryable<Product>());
+            // Arrange - Create a controller and make the page size 3 items
+
+            var controller = new HomeController(mock.Object);
+            controller.PageSize = 3;
+            //Action
+            //Be aware the ViewResult is from ActionResult and has lots of extra properties 
+            var result = ((controller?.Index("Cat2",1) as ViewResult)?.Model as ProductsListViewModel)?.Products.ToArray();
+            //var result = (controller?.Index("Cat1",1).ViewData.Model as ProductsListViewModel).Products.ToArray();   // THIS IS FROM TEXTBOOK AND DOESN'T WORK
+            
+            //Assert
+            Assert.Equal(2, result?.Length);
+            Assert.True(result[0].Name == "p2" && result[0].Category == "Cat2");
+            Assert.True(result[1].Name == "p4" && result[1].Category == "Cat2");
         }
     }
 }
