@@ -20,6 +20,11 @@ namespace SportsStore.Components
         public IViewComponentResult Invoke()
         {
             // choose unique Category and order by Category
+            // RouteData can be accessed from Request
+            
+            ViewBag.SelectedCategory = RouteData?.Values["category"];
+            
+            // Here return a ViewViewComponentResult
             return View(_repository.Products
                 .Select(x=>x.Category)
                 .Distinct()
