@@ -12,7 +12,8 @@ namespace SportsStore.Components
     public class NavigationMenuViewComponent:ViewComponent
     {
         private IStoreRepository _repository;
-
+        
+        // view component is very powerful and it can use DI
         public NavigationMenuViewComponent(IStoreRepository repo)
         {
             _repository = repo;
