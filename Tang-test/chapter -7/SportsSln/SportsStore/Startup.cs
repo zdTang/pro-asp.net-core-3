@@ -42,6 +42,7 @@ namespace SportsStore
             // We can rely on Interface other than an solid implementation by DI
             
             services.AddScoped<IStoreRepository, EFStoreRepository>();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,6 +104,8 @@ namespace SportsStore
                     new { Controller = "Home", action = "Index",productPage=1});
                 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
             
             SeedData.EnsurePopulated(app);
