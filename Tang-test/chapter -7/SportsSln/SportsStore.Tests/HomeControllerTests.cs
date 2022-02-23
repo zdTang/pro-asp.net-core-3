@@ -141,5 +141,38 @@ namespace SportsStore.Tests
             Assert.True(result[0].Name == "p2" && result[0].Category == "Cat2");
             Assert.True(result[1].Name == "p4" && result[1].Category == "Cat2");
         }
+
+        [Fact]
+        public void Generate_Category_Specific_Product_Count()
+        {
+            // Arrange
+            var fake = new Product[]
+            {
+                new Product() { ProductId = 1, Name = "p1",Category="Cat1" },
+                new Product() { ProductId = 2, Name = "p2",Category="Cat2"},
+                new Product() { ProductId = 3, Name = "p3",Category="Cat1" },
+                new Product() { ProductId = 4, Name = "p4",Category="Cat2"},
+                new Product() { ProductId = 5, Name = "p5",Category="Cat3" }
+            };
+            Mock<IStoreRepository> mock = new Mock<IStoreRepository>();
+            mock.Setup(x => x.Products).Returns(fake.AsQueryable<Product>());
+            var target = new HomeController(mock.Object);
+            target.PageSize = 3;
+            // This 
+            Func<ViewResult, ProductsListViewModel> GetModel = result =>
+                result?.ViewData?.Model as ProductsListViewModel;
+            // Action
+            int? res1 = GetModel(target.Index("Cat1") as ViewResult)?.PagingInfo.TotalItems;
+            int? res2 = GetModel(target.Index("Cat2") as ViewResult)?.PagingInfo.TotalItems;
+            int? res3 = GetModel(target.Index("Cat3") as ViewResult)?.PagingInfo.TotalItems;
+            int? resAll = GetModel(target.Index(null) as ViewResult)?.PagingInfo.TotalItems;
+            
+            // Assertion
+            Assert.Equal(2, res1);
+            Assert.Equal(2, res2);
+            Assert.Equal(1, res3);
+            Assert.Equal(5, resAll);
+
+        }
     }
 }
