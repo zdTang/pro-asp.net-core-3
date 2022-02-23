@@ -117,3 +117,7 @@
      1, How are URLs mapping the specified Actions.. 
      2, How Tag Helper IUrlHeper interface provide URL-generating functions
      3, This tag helper is complex, try to understand it.
+
+#8   The logic under the "Add to Cart" button.
+     For each item, there are two hidden input items come with it. 
+     notice the returURL, It is created by a extension method: Request.PathAndQuery(), is is a good approach?
