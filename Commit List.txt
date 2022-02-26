@@ -121,3 +121,6 @@
 #8   The logic under the "Add to Cart" button.
      For each item, there are two hidden input items come with it. 
      notice the returURL, It is created by a extension method: Request.PathAndQuery(), is is a good approach?
+
+#8   Unit test, Mock Session
+     Try to understand how to mock Get Property, and how to use callback.
