@@ -17,7 +17,7 @@ namespace SportsStore.Models
         // For adding a new Item, check if the item was in the List
         // if No, then add the new Item 
         // if Yes, means the user want more same items so that increase the quantity
-        public void AddItem(Product product, int quantity)
+        public virtual void AddItem(Product product, int quantity)
         {
             CartLine line = Lines.Where(p => p.Product.ProductId == product.ProductId)?.FirstOrDefault();
             if (line == null) // not in the List so that we put it in.
@@ -30,11 +30,11 @@ namespace SportsStore.Models
             }
         }
 
-        public void RemoveLine(Product product) => Lines.RemoveAll(l => l.Product.ProductId == product.ProductId);
+        public virtual void RemoveLine(Product product) => Lines.RemoveAll(l => l.Product.ProductId == product.ProductId);
 
         public decimal ComputedTotalValue() => Lines.Sum(e => e.Quantity * e.Product.Price);
 
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
     }
 
     
