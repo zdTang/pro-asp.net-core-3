@@ -12,6 +12,11 @@ namespace SportsStore.Pages
         public Cart Cart { get; set; }
         public string ReturnUrl { get; set; }
         
+        // Be aware the "Cart cartService" will taken from Service Container
+        // We have injected with AddScoped<Cart>()
+        // So that here we don't need worry about how to deal with Session and HttpContext
+        // We just asked the Cart Instance from Service Container
+        // This approach will also make testing a little simple
         public CartModel(IStoreRepository repo, Cart cartService)
         {
             repository = repo;

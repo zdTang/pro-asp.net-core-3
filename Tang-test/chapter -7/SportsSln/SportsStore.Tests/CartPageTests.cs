@@ -34,7 +34,7 @@ namespace SportsStore.Tests
             var testCart = new Cart();
             testCart.AddItem(p1,2);
             testCart.AddItem(p2,1);
-            
+            /* We don't need to think about how to mock Session any more   ============
             // - create a mock page context and session
             var mockSession = new Mock<ISession>();
             //For implement ISession, we need a byte[] -- to use TryGetValue()
@@ -48,9 +48,12 @@ namespace SportsStore.Tests
             var mockContext = new Mock<HttpContext>();
             mockContext.SetupGet(c => c.Session).Returns(mockSession.Object);
 
+            ============================================================================*/
             //action
 
-            var cartModel = new CartModel(mockRepo.Object)
+            var cartModel = new CartModel(mockRepo.Object, testCart);
+            /*===========================================================
+             we don't need to reconstruct a PageContext as do will not handle HttpContext anymore
             {
                 //should understand how PageContext comprised of 
                 PageContext = new PageContext(new ActionContext
@@ -61,6 +64,8 @@ namespace SportsStore.Tests
                     ActionDescriptor = new PageActionDescriptor()
                 })
             };
+            
+            =======================================================*/
             cartModel.OnGet("myUrl");
             //assertion
             
@@ -87,6 +92,8 @@ namespace SportsStore.Tests
             var testCart = new Cart();
             //https://stackoverflow.com/questions/2833162/can-you-help-me-understand-moq-callback
             
+            /*=============================
+            
             var mockSession = new Mock<ISession>();
             
             // Try to understand how this Callback Works
@@ -100,9 +107,11 @@ namespace SportsStore.Tests
             var mockContext = new Mock<HttpContext>();
             
             mockContext.SetupGet(c => c.Session).Returns(mockSession.Object);
-
+            =========================================================================================*/
+            
             //Action
-            var cartModel = new CartModel(mockRepo.Object)
+            var cartModel = new CartModel(mockRepo.Object, testCart);
+            /*====================================
             {
                 PageContext = new PageContext(new ActionContext
                 {
@@ -111,6 +120,7 @@ namespace SportsStore.Tests
                     ActionDescriptor = new PageActionDescriptor()
                 })
             };
+            =====================================*/
             cartModel.OnPost(1, "myUrl");
             //Assert
             Assert.Single(testCart.Lines);

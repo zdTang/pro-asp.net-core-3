@@ -130,3 +130,6 @@
      b.Understand AddScoped<T>, and AddSingleton<T,Y>
      c.Be familiar with using AddScoped<T>() to return a Service, and we will use this Service anywhere in the project, and the Service we request
      is always the same one.
+
+# 9  updating the unit test
+     Using service simplifies the testing process greatly.
