@@ -124,3 +124,9 @@
 
 #8   Unit test, Mock Session
      Try to understand how to mock Get Property, and how to use callback.
+
+
+# 9  a.Try to read the text book one more time
+     b.Understand AddScoped<T>, and AddSingleton<T,Y>
+     c.Be familiar with using AddScoped<T>() to return a Service, and we will use this Service anywhere in the project, and the Service we request
+     is always the same one.

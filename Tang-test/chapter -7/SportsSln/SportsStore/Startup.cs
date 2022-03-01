@@ -45,6 +45,12 @@ namespace SportsStore
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            //sp=>ServiceProvider
+            // Try to understand why we add the following two services
+            // GetCart is a static method
+            // Read P192 of text book.  Pro ASP.NET core 3.0
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +68,8 @@ namespace SportsStore
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            
+            
 
             app.UseRouting();
             
