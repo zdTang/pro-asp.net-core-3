@@ -131,5 +131,11 @@
      c.Be familiar with using AddScoped<T>() to return a Service, and we will use this Service anywhere in the project, and the Service we request
      is always the same one.
 
+
+
 # 9  updating the unit test
      Using service simplifies the testing process greatly.
+	 
+# 9 Creating the view component class and view
+    1, Adding Font awesome
+	2, Creating the view component --- view component is very powerful!
