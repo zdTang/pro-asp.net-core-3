@@ -15,6 +15,7 @@ namespace SportsStore.Models
 
         // Get "Cart" from Session
         // Why we use static method here ???
+        // https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions.createscope?view=dotnet-plat-ext-6.0
         public static Cart GetCart(IServiceProvider services)
         {
             //ISession session = HttpContext.Session;  // cannot get Session from static method by this way
@@ -28,6 +29,7 @@ namespace SportsStore.Models
         {
             base.AddItem(product, quantity);
             Session.SetJson("Cart",this);
+            
         }
 
         public override void RemoveLine(Product product)

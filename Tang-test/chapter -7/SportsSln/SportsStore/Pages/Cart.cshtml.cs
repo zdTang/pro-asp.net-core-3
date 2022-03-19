@@ -25,19 +25,20 @@ namespace SportsStore.Pages
             // So that the Instance will be the same one within one HTTP REQUEST
             Cart = cartService;
         }
-        
+        // OnGet will render Razor view
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
            // Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
 
+        // OnPost will process coming data and redirect to OnGet and return View
         public IActionResult OnPost(long productID, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productID);
             //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-            Cart.AddItem(product,1);
-            HttpContext.Session.SetJson("cart",Cart);
+            Cart.AddItem(product,1);                                 // this Cart is SessionCart
+            //HttpContext.Session.SetJson("cart",Cart);
             // Redirects (Status302Found) to the current page with the specified routeValues.
             // This post will update Session state
             // After that, we need redirect the request to an active Page

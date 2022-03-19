@@ -49,6 +49,7 @@ namespace SportsStore
             // Try to understand why we add the following two services
             // GetCart is a static method
             // Read P192 of text book.  Pro ASP.NET core 3.0
+            // https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions.addscoped?view=dotnet-plat-ext-6.0#microsoft-extensions-dependencyinjection-servicecollectionserviceextensions-addscoped(microsoft-extensions-dependencyinjection-iservicecollection-system-type-system-func((system-iserviceprovider-system-object)))
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
@@ -115,7 +116,7 @@ namespace SportsStore
                     new { Controller = "Home", action = "Index",productPage=1});
                 
                 endpoints.MapDefaultControllerRoute();
-
+                //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.razorpagesendpointroutebuilderextensions.maprazorpages?view=aspnetcore-6.0
                 endpoints.MapRazorPages();
             });
             
