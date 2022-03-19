@@ -44,5 +44,11 @@ namespace SportsStore.Pages
             // After that, we need redirect the request to an active Page
             return RedirectToPage(new {returnUrl = returnUrl});
         }
+
+        public IActionResult OnPostRemove(long productId, string returnUrl)
+        {
+            Cart.RemoveLine(Cart.Lines.First(cl=>cl.Product.ProductId == productId).Product);
+            return RedirectToPage(new {returnUrl = returnUrl});
+        }
     }
 }
