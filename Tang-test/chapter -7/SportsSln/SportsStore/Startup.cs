@@ -42,6 +42,7 @@ namespace SportsStore
             // We can rely on Interface other than an solid implementation by DI
             
             services.AddScoped<IStoreRepository, EFStoreRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
