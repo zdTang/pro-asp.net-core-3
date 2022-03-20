@@ -16,7 +16,8 @@ namespace SportsStore.Models
                 .GetRequiredService<StoreDbContext>();
             
 
-            //if (context.Database.GetPendingMigrations().Any())
+            //if (context.Database.GetPendingMigrations().Any())--Original synchronous approach
+            //if pending migrations, then migrate it to database
             if (context.Database.GetPendingMigrationsAsync().GetAwaiter().GetResult().Any())
             {
                 //context.Database.Migrate();

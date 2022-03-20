@@ -10,22 +10,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations-Leagcy\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Migrations-Leagcy\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Migrations-Leagcy\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Migrations-Leagcy\**" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
