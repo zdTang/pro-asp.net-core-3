@@ -139,3 +139,6 @@
 # 9 Creating the view component class and view
     1, Adding Font awesome
 	2, Creating the view component --- view component is very powerful!
+	
+[Chapter9- p229]- Completing the Order Controller
+    front-end validation and back end validation has not implement!
