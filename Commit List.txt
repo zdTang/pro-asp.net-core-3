@@ -148,3 +148,9 @@
     The server-side validation:   
 	no javascript-validation libraries have been added to the View
 	During Type-binding, The ModelState find Error and the Controller return the View with Error Message.(No model need to be passed to View)
+
+[Chapter 9]
+
+    I added client-side validation.
+	1, add-validation for each field ( asp-validation, asp-for, Attribute on the Model field)
+	2, with client-side validation, if error happens, the submit will not be triggered.
