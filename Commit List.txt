@@ -142,3 +142,9 @@
 	
 [Chapter9- p229]- Completing the Order Controller
     front-end validation and back end validation has not implement!
+	
+[Chapter9- p232]- Displaying Validation Errors
+
+    The server-side validation:   
+	no javascript-validation libraries have been added to the View
+	During Type-binding, The ModelState find Error and the Controller return the View with Error Message.(No model need to be passed to View)
