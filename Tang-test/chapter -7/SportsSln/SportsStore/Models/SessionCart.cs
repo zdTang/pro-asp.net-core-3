@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Infrastructure;
+using System;
+using System.Text.Json.Serialization;
 
 namespace SportsStore.Models
 {
@@ -10,7 +10,7 @@ namespace SportsStore.Models
     {
         // This class has only one property
         // Within its instance, there is only one fields to store the state
-        [JsonIgnore] 
+        [JsonIgnore]
         public ISession Session { get; set; }
 
         // Get "Cart" from Session
@@ -28,14 +28,13 @@ namespace SportsStore.Models
         public override void AddItem(Product product, int quantity)
         {
             base.AddItem(product, quantity);
-            Session.SetJson("Cart",this);
-            
+            Session.SetJson("Cart", this);
         }
 
         public override void RemoveLine(Product product)
         {
             base.RemoveLine(product);
-            Session.SetJson("Cart",this);
+            Session.SetJson("Cart", this);
         }
 
         public override void Clear()

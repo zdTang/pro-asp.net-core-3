@@ -9,15 +9,15 @@ namespace SportsStore.Controllers
         private IOrderRepository _orderRepository;
         private Cart _cart;
 
-        public OrderController(IOrderRepository orderRepository,Cart cart)
+        public OrderController(IOrderRepository orderRepository, Cart cart)
         {
             _orderRepository = orderRepository;
-                _cart = cart;
+            _cart = cart;
         }
-        
+
         // Be aware here the "Order" we passed to view will be converted to Dynamic
-        // So that we need a @model in the razor to mapping a type    
-        public IActionResult Checkout()=>View(new Order());
+        // So that we need a @model in the razor to mapping a type
+        public IActionResult Checkout() => View(new Order());
 
         [HttpPost]
         public IActionResult Checkout(Order order)
@@ -31,13 +31,12 @@ namespace SportsStore.Controllers
                 order.Lines = _cart.Lines.ToArray();
                 _orderRepository.SaveOrder(order);
                 _cart.Clear();
-                return RedirectToPage("/Completed",new {orderId=order.OrderId});
+                return RedirectToPage("/Completed", new { orderId = order.OrderId });
             }
             else
             {
                 return View();
             }
         }
-        
     }
 }

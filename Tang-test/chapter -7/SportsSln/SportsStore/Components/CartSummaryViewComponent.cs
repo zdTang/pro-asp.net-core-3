@@ -6,6 +6,7 @@ namespace SportsStore.Components
     public class CartSummaryViewComponent : ViewComponent
     {
         private Cart cart;
+
         public CartSummaryViewComponent(Cart cartService)
         {
             cart = cartService;
@@ -13,8 +14,7 @@ namespace SportsStore.Components
 
         public IViewComponentResult Invoke()
         {
-            return View(cart);  
+            return View(cart);
         }
-
     }
 }

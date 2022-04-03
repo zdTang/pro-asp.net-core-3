@@ -6,10 +6,12 @@ namespace SportsStore.Models
     public class EFOrderRepository : IOrderRepository
     {
         private StoreDbContext _dbContext;
+
         public EFOrderRepository(StoreDbContext dbContext)
         {
             _dbContext = dbContext;
         }
+
         // Reference the Order class and see the relationship between
         // order + Lines + product
         public IQueryable<Order> Orders => _dbContext.Orders
@@ -18,12 +20,12 @@ namespace SportsStore.Models
 
         public void SaveOrder(Order order)
         {
-            _dbContext.AttachRange(order.Lines.Select(l=>l.Product));
+            _dbContext.AttachRange(order.Lines.Select(l => l.Product));
             if (order.OrderId == 0)
             {
                 _dbContext.Orders.Add(order);
             }
-            _dbContext.SaveChanges();   
+            _dbContext.SaveChanges();
         }
     }
 }

@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
+using System.Text;
 
 namespace SportsStore
 {
@@ -18,12 +13,11 @@ namespace SportsStore
     {
         public IConfiguration Configuration { get; }
         private IServiceCollection _services;
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,11 +30,11 @@ namespace SportsStore
             {
                 opts.UseSqlServer(Configuration["ConnectionStrings:SportsStoreConnection"]);
             });*/
-            
-            // By using Repository Pattern. we define an Interface and implement it 
+
+            // By using Repository Pattern. we define an Interface and implement it
             // We then register it as service
             // We can rely on Interface other than an solid implementation by DI
-            
+
             services.AddScoped<IStoreRepository, EFStoreRepository>();
             services.AddScoped<IOrderRepository, EFOrderRepository>();
             services.AddRazorPages();
@@ -70,11 +64,9 @@ namespace SportsStore
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            
-            
 
             app.UseRouting();
-            
+
             // add this if you want to add this for a particular path in an existing app
             app.Map("/allservices", builder => builder.Run(async context =>
             {
@@ -83,7 +75,7 @@ namespace SportsStore
                 sb.Append("<table><thead>");
                 sb.Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>");
                 sb.Append("</thead><tbody>");
-                foreach(var svc in _services)
+                foreach (var svc in _services)
                 {
                     sb.Append("<tr>");
                     sb.Append($"<td>{svc.ServiceType.FullName}</td>");
@@ -102,25 +94,25 @@ namespace SportsStore
                 //endpoints.MapRazorPages();
                 endpoints.MapControllerRoute("catpage",
                     "{category}/Page{productPage:int}",
-                    new { Controller = "Home", action = "Index"});
-                
+                    new { Controller = "Home", action = "Index" });
+
                 endpoints.MapControllerRoute("page",
                     "Page{productPage:int}",
-                    new { Controller = "Home", action = "Index",productPage=1});
-                
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+
                 endpoints.MapControllerRoute("category",
                     "{category}",
-                    new { Controller = "Home", action = "Index",productPage=1});
-                
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+
                 endpoints.MapControllerRoute("pagination",
                 "Products/Page{productPage}",
-                    new { Controller = "Home", action = "Index",productPage=1});
-                
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+
                 endpoints.MapDefaultControllerRoute();
                 //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.razorpagesendpointroutebuilderextensions.maprazorpages?view=aspnetcore-6.0
                 endpoints.MapRazorPages();
             });
-            
+
             SeedData.EnsurePopulated(app);
         }
     }
