@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1mkpcjmVf91uOYz0fUAVk6VrUXGsoXif+TwugJYfD8XfDiT39EI7OQBFHlEnm2kBRNdcWtt5vFCknxHYZaF2Dw==",
+  "success": true,
+  "projectFilePath": "D:\\LeetCode\\LearnASP\\Pro-Asp-net-core-3\\Update for ASP.NET Core 5 and .NET 5.0\\Chapter 06\\Testing\\SimpleApp\\SimpleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d122c7a1-34db-4083-bbcf-ea85634e1d52": {
+      "ProjectGuid": "d122c7a1-34db-4083-bbcf-ea85634e1d52",
+      "DisplayName": "SportsStore",
+      "ColorIndex": 0
+    },
+    "850f793a-43ac-4ff1-8935-ceb1eedcf532": {
+      "ProjectGuid": "850f793a-43ac-4ff1-8935-ceb1eedcf532",
+      "DisplayName": "SportsStore.Tests",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

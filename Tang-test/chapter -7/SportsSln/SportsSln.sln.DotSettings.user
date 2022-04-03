@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\micha\AppData\Local\JetBrains\Rider2021.3\resharper-host\temp\Rider\vAny\CoverageData\_SportsSln.-2142146651\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=069bdd8e_002D616d_002D45e6_002Da406_002D71839a539d75/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PageLinkTagHelperTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.PageLinkTagHelperTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.ProductControllerTests.Can_Paginate&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.ProductControllerTests.Can_Send_Pagination_View_Model&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.ProductControllerTests.Can_Filter_Products&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.NavigationMenuViewComponentTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::850F793A-43AC-4FF1-8935-CEB1EEDCF532::net5.0::SportsStore.Tests.ProductControllerTests.Generate_Category_Specific_Product_Count&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>
