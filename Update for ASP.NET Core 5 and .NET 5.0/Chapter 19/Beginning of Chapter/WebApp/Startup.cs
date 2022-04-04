@@ -26,6 +26,8 @@ namespace WebApp {
                     "ConnectionStrings:ProductConnection"]);
                 opts.EnableSensitiveDataLogging(true);
             });
+
+            services.AddControllers();  // Add services for MVC framework, it will not used for View and Pages.
         }
 
         public void Configure(IApplicationBuilder app, DataContext context) {
@@ -39,7 +41,8 @@ namespace WebApp {
                     await context.Response.WriteAsync("Hello World!");
                 });
                 // Add the extension method here !
-                endpoints.MapWebService();
+                // endpoints.MapWebService();
+                endpoints.MapControllers();      // Add endpoints to Controller Actions
             });
 
             SeedData.SeedDatabase(context);
