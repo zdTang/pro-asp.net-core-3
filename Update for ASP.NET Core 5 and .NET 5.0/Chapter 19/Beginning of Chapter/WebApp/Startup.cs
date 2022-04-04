@@ -38,6 +38,8 @@ namespace WebApp {
                 endpoints.MapGet("/", async context => {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                // Add the extension method here !
+                endpoints.MapWebService();
             });
 
             SeedData.SeedDatabase(context);
