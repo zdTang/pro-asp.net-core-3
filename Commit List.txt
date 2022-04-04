@@ -154,3 +154,9 @@
     I added client-side validation.
 	1, add-validation for each field ( asp-validation, asp-for, Attribute on the Model field)
 	2, with client-side validation, if error happens, the submit will not be triggered.
+
+[chapter 19]
+
+Using MVC to create Web service endpoint will save lot of time.
+The framework will handle StatusCode, contentType for us
+We don't need serialize manually. the framework will handle this for us.
